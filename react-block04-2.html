@@ -1,0 +1,83 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block04-2</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js" crossorigin></script>
+  <style>
+    #root {
+          max-width: 106.25rem;
+          width: 100%;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: lightcyan;
+        }
+        input:focus {
+          outline: none;
+        }
+        input {
+          width: 12rem;
+          height: 1.8rem;
+          display: block;
+          padding: 0px 0.3rem;
+        }
+        .wrapper {
+          width: 30rem;
+          padding: 1.2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="root"></div>
+  <script type="text/babel" data-presets="react,stage-3">
+
+    const CurrencyInput = (props) => {
+      return (
+        <input  placeholder="Enter a number in euros" onChange={(event) => props.onChange(event.target.value)} />
+      );
+    };
+
+    const CurrencyDisplay = (props) => {
+      return <h1>$ {(props.value * 1.17)}</h1>;
+    };
+
+    const App = () => {
+      const [value, setValue] = React.useState(0);
+
+      return (
+        <div className='wrapper'>
+          <CurrencyInput onChange={setValue} />
+          <CurrencyDisplay value={value} />
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
